@@ -145,4 +145,10 @@ public class BinaryTree {
         return null;
     }
 
+    public static void main(String[] args) {
+        BinaryTree binaryTree = new BinaryTree();
+        BTNode root = binaryTree.createTree();
+        System.out.println(binaryTree.getHeight(root));
+    }
+
 }
