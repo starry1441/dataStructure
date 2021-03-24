@@ -29,8 +29,8 @@ public class Work2 {
             }
         }
         while(!queue.isEmpty()) {
-            if(cur != null) return false;
             TreeNode cur = queue.poll();
+            if(cur != null) return false;
         }
         return true;
     }
