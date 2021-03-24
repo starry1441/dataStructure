@@ -1,5 +1,9 @@
 package Work3_15;
 
+import work3_16.TreeNode;
+
+import java.util.*;
+
 /**
  * Created with IntelliJ IDEA.
  * Description:二叉树
@@ -145,10 +149,146 @@ public class BinaryTree {
         return null;
     }
 
+    //层序遍历
+    void levelOrderTraversal(BTNode root) {
+        if(root == null) return;
+        Queue<BTNode> queue = new LinkedList<>();
+        queue.offer(root);
+        BTNode cur = root;
+        while(!queue.isEmpty()) {
+            cur = queue.poll();
+            System.out.println(cur.val);
+            if(cur.left != null) {
+                queue.offer(cur.left);
+            }
+            if(cur.right != null) {
+                queue.offer(cur.right);
+            }
+        }
+
+    }
+
+    public List<List<Character>> levelOrder(BTNode root) {
+        if(root == null) return null;
+        List<List<Character>> out = new ArrayList<>();
+        Queue<BTNode> queue1 = new LinkedList<>();
+        Queue<BTNode> queue2 = new LinkedList<>();
+        queue1.offer(root);
+        while(!queue1.isEmpty() || !queue2.isEmpty()) {
+            List<Character> in = new ArrayList<>();
+            boolean join1 = false;
+            while (!queue1.isEmpty()) {
+                join1 = true;
+                BTNode cur = queue1.poll();
+                in.add(cur.val);
+                if(cur.left != null) {
+                    queue2.offer(cur.left);
+                }
+                if(cur.right != null) {
+                    queue2.offer(cur.right);
+                }
+            }
+            if (join1) {
+                out.add(in);
+                continue;
+            }
+            while (!queue2.isEmpty()) {
+                BTNode cur = queue2.poll();
+                in.add(cur.val);
+                if(cur.left != null) {
+                    queue1.offer(cur.left);
+                }
+                if(cur.right != null) {
+                    queue1.offer(cur.right);
+                }
+            }
+            out.add(in);
+        }
+        return out;
+    }
+
+    // 判断一棵树是不是完全二叉树
+    boolean isCompleteTree(BTNode root) {
+        if (root == null) return false;
+        Queue<BTNode> queue = new LinkedList<>();
+        queue.offer(root);
+        while(!queue.isEmpty()) {
+            BTNode cur = queue.poll();
+            if(cur == null) {
+                break;
+            }else {
+                queue.offer(cur.left);
+                queue.offer(cur.right);
+            }
+        }
+        while(!queue.isEmpty()) {
+            BTNode cur = queue.poll();
+            if(cur != null) return false;
+        }
+        return true;
+    }
+
+    // 前序遍历---非递归
+    void preOrderTraversalNor(BTNode root) {
+        if(root == null) return;
+        Stack<BTNode> stack = new Stack<>();
+        BTNode cur = root;
+        while (cur != null || !stack.isEmpty()) {
+            while (cur != null) {
+                stack.push(cur);
+                System.out.println(cur.val + " ");
+                cur = cur.left;
+            }
+            BTNode top = stack.pop();
+            cur = top.right;
+        }
+        System.out.println();
+    }
+
+    // 中序遍历---非递归
+    void inOrderTraversalNor(BTNode root) {
+        if(root == null) return;
+        Stack<BTNode> stack = new Stack<>();
+        BTNode cur = root;
+        while (cur != null || !stack.isEmpty()) {
+            while (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
+            }
+            BTNode top = stack.pop();
+            System.out.println(top.val + " ");
+            cur = top.right;
+        }
+        System.out.println();
+    }
+
+    // 后序遍历---非递归
+    void postOrderTraversalNor(BTNode root) {
+        if(root == null) return;
+        Stack<BTNode> stack = new Stack<>();
+        BTNode cur = root;
+        BTNode prev = null;
+        while (cur != null || !stack.isEmpty()) {
+            while (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
+            }
+            BTNode top = stack.peek();
+            if(top.right == null || top.right == prev) {
+                stack.pop();
+                System.out.println(top.val + " ");
+                prev = top;
+            }else {
+                cur = top.right;
+            }
+        }
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         BinaryTree binaryTree = new BinaryTree();
         BTNode root = binaryTree.createTree();
-        System.out.println(binaryTree.getHeight(root));
+        System.out.println(binaryTree.isCompleteTree(root));
     }
 
 }
