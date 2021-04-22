@@ -147,6 +147,17 @@ public class HeapDemo  {
         System.out.println();
     }
 
+    public void heapSort() {
+        int end = usedSize-1;
+        while (end > 0) {
+            int top = elem[0];
+            elem[0] = elem[end];
+            elem[end] = top;
+            adjustDown2(0,end);
+            end--;
+        }
+    }
+
 }
 
 

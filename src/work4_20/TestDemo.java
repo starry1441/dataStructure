@@ -1,6 +1,7 @@
 package work4_20;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**
@@ -19,7 +20,12 @@ public class TestDemo {
          * 每次存元素的时候，一定要保证数据进去堆后，依然可以维持为一个小堆/大堆
          * 每次取出一个元素的时候，一定要保证剩下的元素，也要调整为一个小堆/大堆
          */
-        PriorityQueue<Integer> qu = new PriorityQueue<>();
+        PriorityQueue<Integer> qu = new PriorityQueue<>(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o2-o1;
+            }
+        });
         qu.offer(21);
         qu.offer(23);
         qu.offer(2);
@@ -35,12 +41,14 @@ public class TestDemo {
     public static void main(String[] args) {
         HeapDemo heapDemo = new HeapDemo();
         int[] array = {27,15,19,18,28,34,65,49,25,37};
-        System.out.println(Arrays.toString(array));
+//        System.out.println(Arrays.toString(array));
         heapDemo.createBigHeap(array);
         heapDemo.show();
 //        heapDemo.push(100);
 //        heapDemo.show();
-        System.out.println(heapDemo.poll());
+//        System.out.println(heapDemo.poll());
+//        heapDemo.show();
+        heapDemo.heapSort();
         heapDemo.show();
     }
 
