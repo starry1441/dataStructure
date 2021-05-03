@@ -34,8 +34,8 @@ public class Work3 {
     public void createBigHeap(int[] array) {
         int len = array.length;
         int parent = (len-2)/2;
-        for(int i = 0; i < len; i++) {
-            adjustDown(array,parent,len);
+        for (int i = parent; i >= 0; i--) {
+            adjustDown(array,i,len);
         }
     }
 
