@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  * Created with IntelliJ IDEA.
- * Description:
+ * Description:归并排序---递归
  * User: starry
  * Date: 2021 -05 -03
  * Time: 15:24

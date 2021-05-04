@@ -1,12 +1,11 @@
 package sort;
 
-import javax.swing.plaf.nimbus.State;
 import java.util.Arrays;
 import java.util.Stack;
 
 /**
  * Created with IntelliJ IDEA.
- * Description:
+ * Description: 快速排序 --- 非递归
  * User: starry
  * Date: 2021 -05 -03
  * Time: 14:53
