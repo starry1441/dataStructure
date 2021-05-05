@@ -42,27 +42,27 @@ package work5_5;
  *
  */
 
-class OuterClass {
-    public int data1 = 1;
-    public static int data2 = 2;
-    //静态内部类
-    static class InnerClass {
-        public int data3 = 3;
-        public static int data4 = 4;
-        public OuterClass out;
-        public InnerClass(OuterClass out) {
-            this.out = out;
-        }
-        public void test() {
-            System.out.println("InnerClass::test()");
-            //System.out.println(OuterClass.this.data1);不对的
-            System.out.println(out.data1);
-            System.out.println(data2);
-            System.out.println(data3);
-            System.out.println(data4);
-        }
-    }
-}
+//class OuterClass {
+//    public int data1 = 1;
+//    public static int data2 = 2;
+//    //静态内部类
+//    static class InnerClass {
+//        public int data3 = 3;
+//        public static int data4 = 4;
+//        public OuterClass out;
+//        public InnerClass(OuterClass out) {
+//            this.out = out;
+//        }
+//        public void test() {
+//            System.out.println("InnerClass::test()");
+//            //System.out.println(OuterClass.this.data1);不对的
+//            System.out.println(out.data1);
+//            System.out.println(data2);
+//            System.out.println(data3);
+//            System.out.println(data4);
+//        }
+//    }
+//}
 
 
 public class InnerClass {
@@ -80,10 +80,10 @@ public class InnerClass {
      *
      * @param args
      */
-    public static void main2(String[] args) {
-        OuterClass out = new OuterClass();
-        OuterClass.InnerClass innerClass = new OuterClass.InnerClass(out);
-        innerClass.test();
-    }
+//    public static void main2(String[] args) {
+//        OuterClass out = new OuterClass();
+//        OuterClass.InnerClass innerClass = new OuterClass.InnerClass(out);
+//        innerClass.test();
+//    }
 
 }
